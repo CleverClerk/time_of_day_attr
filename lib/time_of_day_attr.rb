@@ -17,7 +17,7 @@ module TimeOfDayAttr
     end
 
     def localize(value, options = {})
-      seconds = if value.present? then value.seconds else 0
+      seconds = value.to_i.seconds
       format  = options[:format] || :default
       format  = translate_format(format) if format.is_a?(Symbol)
       time    = Time.now.at_midnight + seconds
